@@ -13,11 +13,11 @@ fn solve(words: &mut std::vec::Vec<&str>) {
 
 		api::try_guess(word).iter().enumerate().for_each(|(i, score)| {
 			let ch = word.chars().nth(i).unwrap();
-			match score {
-				0 => words.retain(|w| !w.contains(ch)),
-				1 => words.retain(|w| w.chars().nth(i).unwrap() != ch && word.contains(ch)),
-				_ => words.retain(|w| w.chars().nth(i).unwrap() == ch)
-			}
+			words.retain(|w| match score {
+				0 => !w.contains(ch),
+				1 => w.chars().nth(i).unwrap() != ch && word.contains(ch),
+				_ => w.chars().nth(i).unwrap() == ch
+			});
 		});
 
 		solve(words);
