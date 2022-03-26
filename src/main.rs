@@ -11,7 +11,7 @@ fn solve(words: &mut std::vec::Vec<&str>) {
 			return;
 		}
 
-		api::try_guess(word).iter().enumerate().for_each(|(i, score)| {
+		res.iter().enumerate().for_each(|(i, score)| {
 			let ch = word.chars().nth(i).unwrap();
 			words.retain(|w| match score {
 				0 => !w.contains(ch),

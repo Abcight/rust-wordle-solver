@@ -1,4 +1,4 @@
-const WORD: &str = "depot";
+const WORD: &str = "cargo";
 
 pub fn try_guess(word: &str) -> Vec<u8> {
 	word.chars()
